@@ -1,0 +1,70 @@
+﻿@using MVCEFCodeFirs.Models
+@model KisilerVeAdresleri
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+
+<div class="text-center">
+    <h2>Ana Sayfa</h2>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="col-md-6">
+        <h4>Kişiler</h4>
+
+        <div>
+            @Html.ActionLink("Yeni Kişi Ekle", "Yeni", "Kisi", null, new {@class="btn btn-primary"})
+            <br /><br />
+        </div>
+
+        <ul class="list-group">
+            @foreach (var kisi in Model.Kisiler)
+            {
+            <li class="list-group-item">
+
+                @Html.ActionLink("Sil", "Sil", "Kisi", new {kisiid = kisi.Id}, new { @class = "btn btn-danger btn-xs" })
+                @Html.ActionLink("Düzenle", "Duzenle", "Kisi", new { kisiid = kisi.Id}, new { @class = "btn btn-warning btn-xs" })
+
+
+                <span class="glyphicon glyphicon-user green">
+                    @(kisi.Ad+" "+kisi.Soyad)<br />
+                    (<i>@kisi.Yas</i>)
+                </span>
+            </li>
+            }
+
+        </ul>
+    </div>
+
+
+    <div class="col-md-6">
+        <h4>Adresler</h4>
+
+        <div>
+            @Html.ActionLink("Yeni Adres Ekle", "Yeni", "Adres", null, new { @class = "btn btn-primary" })
+            <br /><br />
+        </div>
+
+        <ul class="list-group">
+            @foreach (var adres in Model.Adresler)
+            {
+            <li class="list-group-item">
+
+                @Html.ActionLink("Sil", "Sil", "Adres", new { adresid = adres.Id}, new { @class = "btn btn-danger btn-xs" })
+                @Html.ActionLink("Düzenle", "Duzenle", "Adres", new { adresid=adres.Id}, new { @class = "btn btn-warning btn-xs" })
+
+
+                <span class="glyphicon glyphicon-home goldenrod">
+                    @adres.AdresTanim
+                    (<i>@(adres.Kisi.Ad+" "+adres.Kisi.Soyad)</i>)<br />
+                </span>
+                <br />
+            </li>
+            }
+
+        </ul>
+    </div>
+</div>

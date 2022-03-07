@@ -1,0 +1,56 @@
+﻿
+@model Adresler
+@{
+    ViewBag.Title = "Adres Düzenle";
+}
+
+<h2>Adres Düzenle</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+
+    <div class="input-group">
+        <span class="input-group-addon"> Yeni Adres Ekle </span>
+        @*@Html.TextBoxFor(x => x.Ad, new { @class = "form-control", placeholder = "Yeni Ad" })*@
+        @*<input type="text" class="form-control" placeholder="Yeni Kişi" />*@
+    </div>
+
+    <br />
+
+    <div class="input-group">
+        <span class="input-group-addon"> Adres </span>
+        @Html.TextAreaFor(x => x.AdresTanim, new { @class = "form-control", placeholder = "Yeni Adres" })
+
+    </div>
+
+    <br />
+
+    <div class="input-group">
+        <span class="input-group-addon"> Kişi </span>
+        @Html.DropDownListFor(x => x.Kisi.Id, (List<SelectListItem>)ViewBag.kisiler, new { @class = "form-control" })
+
+    </div>
+
+    <br />
+
+    <div class="input-group">
+        <input type="submit" value="Kaydet" class="btn btn-success" />
+        <br /><br />
+
+    </div>
+
+
+    <div>
+        <div class="input-group">
+            @if (ViewBag.mesaj != null)
+            {
+                <div class="alert alert-success">
+                    @ViewBag.mesaj
+                </div>
+            }
+
+        </div>
+
+    </div>
+}

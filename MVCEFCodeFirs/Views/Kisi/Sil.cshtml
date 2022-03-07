@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Sil";
+}
+
+<h2>Sil</h2>
+<hr />
+
+<p>Seçilen Kişi Silinecektir!</p>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td><b>Kişi:</b></td>
+            <td>@Model.Ad</td>
+        </tr>
+
+        <tr>
+            <td><b>Soyad:</b></td>
+            <td>@Model.Soyad</td>
+
+        </tr>
+
+        <tr>
+            <td><b>Yaş:</b></td>
+            <td>@Model.Yas</td>
+
+        </tr>
+
+    </table>
+
+    <br />
+    <div class="input-group">
+        <input type="submit" value="Sil" class="btn btn-danger" />
+        <br /><br />
+
+    </div>
+}
